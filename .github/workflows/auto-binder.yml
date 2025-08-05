@@ -1,0 +1,25 @@
+name: JumpCloud Auto-Binder
+
+on:
+  workflow_dispatch:  # You can change this to a schedule later if needed
+
+jobs:
+  autobind:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run auto-binder script
+        env:
+          JUMPCLOUD_API_KEY: ${{ secrets.JUMPCLOUD_API_KEY }}
+        run: python main.py
