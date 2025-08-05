@@ -1,7 +1,9 @@
 name: JumpCloud Auto-Binder
 
 on:
-  workflow_dispatch:  # You can change this to a schedule later if needed
+  schedule:
+    - cron: '*/5 * * * *'  # Every 5 minutes (UTC)
+  workflow_dispatch:       # Still allows manual runs
 
 jobs:
   autobind:
