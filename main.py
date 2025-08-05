@@ -131,8 +131,8 @@ def main():
     systems = get_all("systems")
     print(f"💻 Total systems fetched: {len(systems)}")
 
-    recent_systems = [sys for sys in systems if was_created_within_last_24_hours(sys.get("created"))]
-    print(f"⏰ Systems created in last 24h: {len(recent_systems)}")
+    recent_systems = [sys for sys in systems if was_created_within_last_hour(sys.get("created"))]
+    print(f"⏰ Systems created in last hour: {len(recent_systems)}")
 
     for system in recent_systems:
         sys_id = system.get("id")
