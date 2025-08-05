@@ -128,7 +128,7 @@ def main():
     users = get_all("systemusers")
     print(f"👥 Total users: {len(users)}")
 
-    systems = get_all("systems")  # use_v2=False
+    systems = get_all("systems")
     print(f"💻 Total systems fetched: {len(systems)}")
 
     recent_systems = [sys for sys in systems if was_created_within_last_24_hours(sys.get("created"))]
