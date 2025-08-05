@@ -107,14 +107,14 @@ def bind_user(system_id, user_id):
     return res.ok
 
 
-def was_created_within_last_24_hours(timestamp):
+def was_created_within_last_hour(timestamp):
     if not timestamp:
         return False
     try:
         created_time = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
     except ValueError:
         created_time = datetime.strptime(timestamp, "%Y-%m-%dT%H:%M:%SZ")
-    return datetime.utcnow() - created_time <= timedelta(hours=24)
+    return datetime.utcnow() - created_time <= timedelta(hours=1)
 
 
 def normalize_hostname(name):
